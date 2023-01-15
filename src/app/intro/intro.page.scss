@@ -21,7 +21,8 @@ ion-slide > p {
   font-size: 18px;
   //border-style: dotted solid double;
   //border-color: black;
-  border: 1px solid black;
+  border: 5px solid;
+  border-style: outset;
   border-radius: 30px;
   padding: 20px 20px 20px 20px;
   margin: 20px 20px 20px 20px;
@@ -32,3 +33,5 @@ ion-slide > ion-icon[name="close"] {
   color: black;
   font-size: 40px;
 }
+
+

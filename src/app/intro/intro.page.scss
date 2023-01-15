@@ -2,7 +2,7 @@ ion-slides {
   background-color: white;
   height: 100%;
   max-width: 800px;
-  --bullet-background-active: black;
+  --bullet-background-active: var(--pasar);
   
 }
 .swiper-slide {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IntroGuard } from './guards/intro.guard';
 
 const routes: Routes = [
   {
@@ -8,12 +9,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'intro',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: 'intro',
-    loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule)
+    loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule), canActivate: [IntroGuard]
   },
 ];
 

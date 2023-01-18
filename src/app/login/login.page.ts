@@ -11,11 +11,16 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   validation_message = {
     email: [
-      { type: "required", message: "El Email es Obligatorio" },
-      { type: "pattern", message: "Tu email no es valido" }
+      { type: "required", message: "El Email es obligatoria." },
+      { type: "pattern", message: "Tu email no es valido." }
     ]
   }
-
+  validation_message2 = {
+    password: [
+      { type: "required", message: "La contraseña es obligatoria." },
+      { type: "minLength", message: "La contraseña debe ser de minimo 5 caracteres." }
+    ]
+  }
   constructor(private formBuilder: FormBuilder) { 
     this.loginForm = this.formBuilder.group({
       email: new FormControl(

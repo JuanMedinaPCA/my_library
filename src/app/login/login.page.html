@@ -1,31 +1,58 @@
+<img style="width: auto; height: 220px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Crystal_Clear_app_Login_Manager.svg/2048px-Crystal_Clear_app_Login_Manager.svg.png">
 <ion-content>
-  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-
-    <ion-item fill="solid">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input formControlName="email"></ion-input>
-    </ion-item>
-<div>
-  <ng-container *ngFor="let validation of validation_message.email">
-    <div *ngIf="
-    loginForm.get('email')?.hasError(validation.type) && 
-    (loginForm.get('email')?.dirty || 
-    loginForm.get('email')?.touched)
-    ">
-      {{validation.message}}
-    </div>
-  </ng-container>
-</div>
-    <ion-item fill="solid">
-      <ion-label  position="floating">Contraseña</ion-label>
-      <ion-input formControlName="password"></ion-input>
-    </ion-item>
-<ion-button 
-shape="round"
-color="warning"
-[disabled]="!loginForm.valid"
-type="submit">
-  Login
-</ion-button>
-  </form>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+      <ion-item fill="solid">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+  <div>
+    <ng-container *ngFor="let validation of validation_message.email">
+      <div *ngIf="
+      loginForm.get('email')?.hasError(validation.type) && 
+      (loginForm.get('email')?.dirty || 
+      loginForm.get('email')?.touched)
+      ">
+        {{validation.message}}
+      </div>
+    </ng-container>
+  </div>
+      <ion-item fill="solid">
+        <ion-label  position="floating">Contraseña</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div>
+        <ng-container *ngFor="let validation of validation_message2.password">
+          <div *ngIf="
+          loginForm.get('password')?.hasError(validation.type) && 
+          (loginForm.get('password')?.touched)
+          ">
+            {{validation.message}}
+          </div>
+        </ng-container>
+      </div>
+  <br>
+  <ion-button 
+  shape="round"
+  color="warning"
+  [disabled]="!loginForm.valid"
+  type="submit">
+      Ingresar
+  </ion-button>
+    </form>
+</ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p>¿No tienes cuenta?</p>
+    <ion-buttons slot="end">
+    <ion-button>Registrarse</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

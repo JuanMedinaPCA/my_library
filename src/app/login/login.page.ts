@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { AuthenticateService } from '../services/authenticate.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +24,13 @@ export class LoginPage implements OnInit {
       { type: "minLength", message: "La contraseña debe ser de minimo 5 caracteres." }
     ]
   }
-  constructor(private formBuilder: FormBuilder) { 
+    errorMessage: any;
+
+  constructor(private formBuilder: FormBuilder, 
+    private authenticate: AuthenticateService,
+    private navCtrol: NavController,
+    private storage: Storage
+    ) { 
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -45,6 +54,13 @@ export class LoginPage implements OnInit {
 
   loginUser(credentials: any) {
     console.log(credentials);
+    this.authenticate.loginUser(credentials).then( res => {
+      this.errorMessage = "";
+      this.storage.set("usuarioLogeado", true);
+      this.navCtrol.navigateForward("/home");
+    }).catch(err => {
+      this.errorMessage = err
+    });
   }
 
 }

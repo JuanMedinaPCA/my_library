@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="goToLogin()">
+        Back
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm" (nsSubmit)="registerForm.value">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input formControlName="last_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipo documento</ion-label>
+      <ion-input formControlName="document_type"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Numero documento</ion-label>
+      <ion-input formControlName="document_number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Carrera</ion-label>
+      <ion-input formControlName="career"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Constraseña</ion-label>
+      <ion-input formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-button
+    shape="round"
+    color="warning"
+    type="submit">
+      Registrarse
+  </ion-button>
+  </form>
+</ion-content>

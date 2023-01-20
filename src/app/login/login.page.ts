@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -31,6 +32,7 @@ export class LoginPage implements OnInit {
     private navCtrol: NavController,
     private storage: Storage
     ) { 
+
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -49,6 +51,10 @@ export class LoginPage implements OnInit {
     });
   }
 
+  registrarse(){
+    this.navCtrol.navigateForward("/register");
+  }
+
   ngOnInit() {
   }
 
@@ -56,8 +62,8 @@ export class LoginPage implements OnInit {
     console.log(credentials);
     this.authenticate.loginUser(credentials).then( res => {
       this.errorMessage = "";
-      this.storage.set("usuarioLogeado", true);
-      this.navCtrol.navigateForward("/home");
+      this.storage.set("isUserLoggedIn", true);
+      this.navCtrol.navigateForward("/menu/home");
     }).catch(err => {
       this.errorMessage = err
     });

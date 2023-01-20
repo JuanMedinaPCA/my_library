@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
+
 @Component({
   selector: 'app-intro',
   templateUrl: './intro.page.html',
@@ -53,7 +54,7 @@ export class IntroPage implements OnInit {
 
   finish(){
     this.storage.set("IsIntroShowed", true);
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/menu/home"); 
   }
   ngOnInit() {
   }

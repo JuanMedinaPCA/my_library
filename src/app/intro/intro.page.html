@@ -3,7 +3,10 @@
   <ion-slides pager="true" [options]="slideOpt">
 
     <ion-slide  *ngFor="let slide of slides">
-      <ion-icon name="close" (click)="finish()" ></ion-icon>
+      
+        <ion-icon name="close" (click)="finish()"></ion-icon>
+      
+      
       <h1>{{slide.title}}</h1>
       <h2>{{slide.subtitle}}</h2>
       <img style="width: auto; height: 250px;" src={{slide.img}} alt="">

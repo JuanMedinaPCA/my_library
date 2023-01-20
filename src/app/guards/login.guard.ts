@@ -10,10 +10,10 @@ import { Observable } from 'rxjs';
 export class LoginGuard implements CanActivate {
  constructor(private storage: Storage, private navCtrl: NavController) {}
  async canActivate(){
-    const login = await this.storage.get("usuarioLogeado");
+    const login = await this.storage.get("isUserLoggedIn");
     if (login){
         return true;
-    }else {
+    }else{
       this.navCtrl.navigateForward("/login");
       return false;
     }

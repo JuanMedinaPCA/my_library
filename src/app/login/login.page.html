@@ -2,7 +2,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Login</ion-card-title>
+      <ion-card-title class="ion-text-center">Login</ion-card-title>
     </ion-card-header>
   <ion-card-content>
     <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
@@ -36,9 +36,8 @@
         </ng-container>
       </div>
   <br>
-  <ion-button 
+  <ion-button color="medium"
   shape="round"
-  color="warning"
   [disabled]="!loginForm.valid"
   type="submit">
       Ingresar
@@ -53,7 +52,7 @@
   <ion-toolbar>
     <p>¿No tienes cuenta?</p>
     <ion-buttons slot="end">
-    <ion-button>Registrarse</ion-button>
+    <ion-button (click)="registrarse()" >Registrarse</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

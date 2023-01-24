@@ -1,5 +1,5 @@
 ion-slides {
-  background-color: white;
+  background: linear-gradient(var(--fondo), white);
   height: 100%;
   max-width: 800px;
   --bullet-background-active: var(--pasar);
@@ -7,7 +7,7 @@ ion-slides {
 }
 .swiper-slide {
   display: block;
-  background-color: var(--fondo);
+  //background-color: var(--fondo);
   padding: 20px 0px 20px 0px;
 }
 
@@ -34,4 +34,9 @@ ion-slide > ion-icon[name="close"] {
   font-size: 40px;
 }
 
-
+ion-slide > img {
+  width: 300px; 
+  height: 300px; 
+  border:5px solid; 
+  border-style: outset;
+}

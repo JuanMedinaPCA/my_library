@@ -48,11 +48,10 @@
     <ion-item>
       <ion-label position="floating">Tipo de documento</ion-label>
       <ion-select placeholder="Seleccione el tipo de documento" formControlName="document_type">
-        <ion-select-option value="ti">Tarteja de identidad</ion-select-option>
-        <ion-select-option value="cc">Cedula de ciudadania</ion-select-option>
-        <ion-select-option value="ce">Cedula de extranjeria</ion-select-option>
-        <ion-select-option value="ps">Pasaporte</ion-select-option>
-      </ion-select>
+        <ion-select-option *ngFor="let item of listaTipoDeDocumento" value="item.display">
+          {{item.display}}
+        </ion-select-option>
+        </ion-select>
     </ion-item>
    <div>
     <ng-container *ngFor="let validation of validarCampos.document_type">
@@ -86,10 +85,9 @@
     <ion-item>
       <ion-label position="floating">Carrera</ion-label>
       <ion-select placeholder="Seleccione la carrera" formControlName="career">
-        <ion-select-option value="ing-sys">Ingenieria de sistemas</ion-select-option>
-        <ion-select-option value="ing-elec">Ingenieria electronica</ion-select-option>
-        <ion-select-option value="ing-mct">Ingenieria mecatronica</ion-select-option>
-        <ion-select-option value="ing-ind">Ingenieria industrial</ion-select-option>
+        <ion-select-option *ngFor="let item of listaDeCarreras" value="item.display">
+          {{item.display}}
+        </ion-select-option>
       </ion-select>
     </ion-item>
     <div>
@@ -138,6 +136,7 @@
     
 <br>
     <ion-button
+    expand="block"
     shape="round"
     color="medium"
     [disabled]="!registerForm.valid"

@@ -65,5 +65,5 @@ export class LoginPage implements OnInit {
       this.errorMessage = err
     });
   }
- 
+
 }

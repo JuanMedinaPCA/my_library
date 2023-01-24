@@ -93,5 +93,29 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateForward("/login");
 }
 
+listaTipoDeDocumento = [
+  {
+    display: "tarjeta de identidad"
+  },
+  {display: "cedula de ciudadania"
+  },
+  {display: "cedula de extranjeria"
+  },
+  {display: "pasaporte"}
+]
 
+listaDeCarreras = [
+  {
+    display: "Ingenieria de sistemas"
+  },
+  {
+    display: "Ingeniera electronica"
+  },
+  {
+    display: "Ingeniera mecatronica"
+  },
+  {
+    display: "Ingenieria industrial"
+  }
+]
 }

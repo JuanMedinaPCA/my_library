@@ -22,28 +22,32 @@ export class IntroPage implements OnInit {
       class: "slide1",
       title: "Bienvenidos",
       subtitle: "Libreria caja de lectura",
-      img: "https://decoracion2.com/opendeco/wp-content/uploads/2010/12/Mural-con-libros-300x199-1.jpg",
+      img: "assets/img1.jpg",
+      titulo2: "",
       descripcion: " Al lanzar una mirada a la libreria CAJA DE LECTURA encontraras interesantes y diversas categorias, ya que cuenta con una excelente seleccion de literatura clasica, medieval y narrativa. Este es un espacio que invita a los usuarios a dedicarsea la lectura con total tranquilidad.",
       //button: ""
     },
     {
       title: "Literatura clasica",
       subtitle: "",
-      img: "https://k60.kn3.net/F/C/D/D/A/9/0AF.jpg",
+      img: "assets/img2.jpg",
+      titulo2: "Selecciona tu libro",
       descripcion: "En esta seccion encontraras literatura clasica, con interesantes libros que han permanecido en el gusto publico a traves de los años.",
       //button: "Explorar"
     },
     {
       title: "Literatura medieval",
       subtitle: "",
-      img: "https://www.waldemoheno.net/Medieval/manuscrito.jpg",
+      img: "assets/img3.jpg",
+      titulo2: "",
       descripcion: "En esta seccion encontraras obras literarias, filosofas, religiosas asi como obras de la imaginacion que trasienden los limites de la fantasia lirica para mezclarse con datos historios y aspectos socioculturales.",
       //button: "Explorar"
     },
     {
       title: "Literatura narrativa",
       subtitle: "",
-      img: "https://humanidades.com/wp-content/uploads/2018/12/fabula-e1586045517945.jpg",
+      img: "assets/img4.jpg",
+      titulo2: "",
       descripcion: "En esta seccion encontraras literaturas interesantes que narran una secuncia de hechos ocurridos en un tiempo y espacio determinado vivenciados por uno o varios personajes.",
       //button: "Explorar"
     }

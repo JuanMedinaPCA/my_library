@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LibraryService } from '../services/library.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage  {
    
-  constructor() {}
+authors : any;
 
+
+slideOps = {
+  initialSLide: 2,
+  slidesPerView: 3,
+  centeredSlides: true,
+  speed: 400
+}
+  constructor(private libraryService: LibraryService) {}
+
+  ionViewDidEnter(){
+    this.libraryService.getAuthors().then( res =>{
+      this.authors = res.data;
+      console.log(this.authors)
+    })
+  }
 }

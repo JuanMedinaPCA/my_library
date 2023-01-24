@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { stringify } from 'querystring';
+
+  const correo = ''
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService {
-
+  
   constructor(private storage: Storage) { }
 
-  loginUser(credentials: any){
-    return new Promise((accept, reject)=>{
-      if ( credentials.email == "juan@gmail.com" && credentials.password == "123456")
-      {
-        accept("Login exitoso");
-      } else {
-        reject("Logi fallido");
-      }
-    });
+  
+  loginUser(loginForm: any){
+    
+    var contraseña = localStorage.getItem("contraseñaRegistrada");
+    var correo = localStorage.getItem("emailRegistrado");
+   return new Promise((accept, reject)=>{
+    if ( loginForm.email == correo && loginForm.password == atob(contraseña!))
+        {
+      accept("Login exitoso");
+    } else {
+      reject("Login fallido");
+    }
+  });
   }
 
-  registerUser(userData: any){
-    userData.password = btoa(userData.password);
-    return this.storage.set("user", userData);
-  }
+ 
 }

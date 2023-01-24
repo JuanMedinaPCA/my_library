@@ -53,7 +53,7 @@ export class IntroPage implements OnInit {
   }
 
   finish(){
-    this.storage.set("IsIntroShowed", true);
+    this.storage.set("isIntroShowed", true);
     this.router.navigateByUrl("/menu/home"); 
   }
   ngOnInit() {

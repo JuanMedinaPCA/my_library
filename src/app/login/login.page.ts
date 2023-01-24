@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, EmailValidator } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage';
@@ -15,17 +15,15 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   validation_message = {
     email: [
-      { type: "required", message: "El Email es obligatoria." },
+      { type: "required", message: "El Email es obligatorio." },
       { type: "pattern", message: "Tu email no es valido." }
-    ]
-  }
-  validation_message2 = {
+    ],
     password: [
       { type: "required", message: "La contraseña es obligatoria." },
       { type: "minLength", message: "La contraseña debe ser de minimo 5 caracteres." }
     ]
   }
-    errorMessage: any;
+    errorMessage: any; 
 
   constructor(private formBuilder: FormBuilder, 
     private authenticate: AuthenticateService,
@@ -53,14 +51,13 @@ export class LoginPage implements OnInit {
 
   registrarse(){
     this.navCtrol.navigateForward("/register");
-  }
+  } 
 
-  ngOnInit() {
+  ngOnInit() { 
   }
-
-  loginUser(credentials: any) {
-    console.log(credentials);
-    this.authenticate.loginUser(credentials).then( res => {
+  loginUser(loginForm: any) {
+    console.log(loginForm);
+    this.authenticate.loginUser(loginForm).then( res => {
       this.errorMessage = "";
       this.storage.set("isUserLoggedIn", true);
       this.navCtrol.navigateForward("/menu/home");
@@ -68,5 +65,5 @@ export class LoginPage implements OnInit {
       this.errorMessage = err
     });
   }
-
+ 
 }

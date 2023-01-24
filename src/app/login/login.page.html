@@ -1,4 +1,4 @@
-<img style="width: auto; height: 220px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Crystal_Clear_app_Login_Manager.svg/2048px-Crystal_Clear_app_Login_Manager.svg.png">
+<img  style="width: auto; height: 220px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Crystal_Clear_app_Login_Manager.svg/2048px-Crystal_Clear_app_Login_Manager.svg.png">
 <ion-content>
   <ion-card>
     <ion-card-header>
@@ -15,9 +15,9 @@
       <div *ngIf="
       loginForm.get('email')?.hasError(validation.type) && 
       (loginForm.get('email')?.dirty || 
-      loginForm.get('email')?.touched)
+      loginForm.get('email')?.touched) 
       ">
-        {{validation.message}}
+        {{validation.message}} 
       </div>
     </ng-container>
   </div>
@@ -26,10 +26,11 @@
         <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
       <div>
-        <ng-container *ngFor="let validation of validation_message2.password">
+        <ng-container *ngFor="let validation of validation_message.password">
           <div *ngIf="
           loginForm.get('password')?.hasError(validation.type) && 
-          (loginForm.get('password')?.touched)
+          (loginForm.get('password')?.touched ||
+          loginForm.get('password')?.dirty)
           ">
             {{validation.message}}
           </div>

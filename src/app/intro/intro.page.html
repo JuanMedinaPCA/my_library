@@ -4,18 +4,13 @@
     <ion-slide  *ngFor="let slide of slides">
       
         <ion-icon name="close" (click)="finish()"></ion-icon>
-      
-      
       <h1>{{slide.title}}</h1>
       <h2>{{slide.subtitle}}</h2>
       <img  src={{slide.img}} alt="">
-      <h2>{{slide.titulo2}}</h2>
       <p>
         {{slide.descripcion}}
       </p>
-      
     </ion-slide>
-
   </ion-slides>
 </ion-content>
 

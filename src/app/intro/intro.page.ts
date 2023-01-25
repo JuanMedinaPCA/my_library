@@ -19,11 +19,10 @@ export class IntroPage implements OnInit {
 
   slides = [
     {
-      class: "slide1",
+      //class: "slide1",
       title: "Bienvenidos",
       subtitle: "Libreria caja de lectura",
       img: "assets/img1.jpg",
-      titulo2: "",
       descripcion: " Al lanzar una mirada a la libreria CAJA DE LECTURA encontraras interesantes y diversas categorias, ya que cuenta con una excelente seleccion de literatura clasica, medieval y narrativa. Este es un espacio que invita a los usuarios a dedicarsea la lectura con total tranquilidad.",
       //button: ""
     },
@@ -31,7 +30,6 @@ export class IntroPage implements OnInit {
       title: "Literatura clasica",
       subtitle: "",
       img: "assets/img2.jpg",
-      titulo2: "Selecciona tu libro",
       descripcion: "En esta seccion encontraras literatura clasica, con interesantes libros que han permanecido en el gusto publico a traves de los años.",
       //button: "Explorar"
     },
@@ -39,7 +37,6 @@ export class IntroPage implements OnInit {
       title: "Literatura medieval",
       subtitle: "",
       img: "assets/img3.jpg",
-      titulo2: "",
       descripcion: "En esta seccion encontraras obras literarias, filosofas, religiosas asi como obras de la imaginacion que trasienden los limites de la fantasia lirica para mezclarse con datos historios y aspectos socioculturales.",
       //button: "Explorar"
     },
@@ -47,7 +44,6 @@ export class IntroPage implements OnInit {
       title: "Literatura narrativa",
       subtitle: "",
       img: "assets/img4.jpg",
-      titulo2: "",
       descripcion: "En esta seccion encontraras literaturas interesantes que narran una secuncia de hechos ocurridos en un tiempo y espacio determinado vivenciados por uno o varios personajes.",
       //button: "Explorar"
     }

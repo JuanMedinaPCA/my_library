@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, EmailValidator } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage';
@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
   }
   loginUser(loginForm: any) {
     console.log(loginForm);
-    this.authenticate.loginUser(loginForm).then( res => {
+    this.authenticate.loginUser(loginForm).then(resp => {
       this.errorMessage = "";
       this.storage.set("isUserLoggedIn", true);
       this.navCtrol.navigateForward("/menu/home");

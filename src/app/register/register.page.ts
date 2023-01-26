@@ -85,6 +85,13 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateBack("/login");
   }
 
+  registerUser(data: any){
+    console.log(data);
+    this.authenticate.registerUser(data).then(() =>{
+      this.navCtrl.navigateForward("/login");
+    })
+  }
+
   registrarUsuario(register_form: any){
     console.log(register_form)
     register_form.password = btoa(register_form.password);

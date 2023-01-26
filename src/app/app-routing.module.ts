@@ -28,7 +28,9 @@ const routes: Routes = [
   {
     path: 'books-modal',
     loadChildren: () => import('./books-modal/books-modal.module').then( m => m.BooksModalPageModule)
-  },
+  }
+  
+  
 ];
 
 @NgModule({

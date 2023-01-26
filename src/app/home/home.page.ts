@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { LibraryService } from '../services/library.service';
 import { BooksModalPage } from '../books-modal/books-modal.page';
 
@@ -15,18 +15,20 @@ booksOff: any;
 
 
 slideOps = {
-  initialSLide: 1,
+  initialSlide: 1,
   slidesPerView: 3,
   centeredSlides: true,
   speed: 400
 }
   constructor(private libraryService: LibraryService,
-    private modalController: ModalController) {}
+    private modalController: ModalController,
+    private navCtrl: NavController,
+    private menu: MenuController) {}
 
   ionViewDidEnter(){
     this.libraryService.getAuthors().then( res =>{
       this.authors = res;
-    })
+    }) 
 
     this.booksOff = this.libraryService.getBooksOffline();
     console.log(this.booksOff.books);
@@ -40,5 +42,15 @@ slideOps = {
     }
    });
     return await modal.present();
+  }
+
+  goToAuthors() {
+    this.navCtrl.navigateForward("/menu/authors");
+    this.menu.close();
+  }
+
+  goToBooks() {
+    this.navCtrl.navigateForward("/menu/books");
+    this.menu.close();
   }
 }

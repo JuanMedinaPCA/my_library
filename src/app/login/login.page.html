@@ -6,7 +6,7 @@
       <ion-card-title class="ion-text-center">Login</ion-card-title>
     </ion-card-header>
   <ion-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUserDB(loginForm.value)">
       <ion-item fill="solid">
         <ion-label position="floating">Email</ion-label>
         <ion-input formControlName="email"></ion-input>

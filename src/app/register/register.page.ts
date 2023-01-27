@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -38,7 +39,8 @@ export class RegisterPage implements OnInit {
   }
   constructor(private navCtrl: NavController,
     private formBuilder: FormBuilder,
-    private authenticate: AuthenticateService) {
+    private authenticate: AuthenticateService,
+    private alertController: AlertController) {
       
       this.registerForm = this.formBuilder.group({
         name: new FormControl(
@@ -52,7 +54,7 @@ export class RegisterPage implements OnInit {
         document_type: new FormControl(
         "",
         Validators.compose([Validators.required])
-        ),
+        ), 
         document_number: new FormControl(
         "",
         Validators.compose([Validators.required])
@@ -85,44 +87,69 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateBack("/login");
   }
 
-  registerUser(data: any){
+  registerUserDB(registerForm: any){
+    console.log(registerForm)
+    this.authenticate.registerUserDB(registerForm).then( res => {
+      this.navCtrl.navigateForward("/login");
+    }).catch(err =>{
+      this.presentAlert("Opps", "Hubo un error al tratar de registrarte", err);
+    })
+  }
+
+  async presentAlert(header: any, subHeader: any, message: any) {
+    const alert = await this.alertController.create(
+     {
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: ['OK']
+     }
+    );
+    await alert.present();
+  }
+
+  registerUserLocal(data: any){
     console.log(data);
-    this.authenticate.registerUser(data).then(() =>{
+    this.authenticate.registerUserLocal(data).then(() =>{
       this.navCtrl.navigateForward("/login");
     })
   }
 
-  registrarUsuario(register_form: any){
-    console.log(register_form)
-    register_form.password = btoa(register_form.password);
-    localStorage.setItem('emailRegistrado', (register_form.email));
-    localStorage.setItem('contraseñaRegistrada',(register_form.password));
-    this.navCtrl.navigateForward("/login");
-}
-
 listaTipoDeDocumento = [
   {
-    display: "tarjeta de identidad"
+    display: "tarjeta de identidad",
+    value: "ti"
   },
-  {display: "cedula de ciudadania"
+  {display: "cedula de ciudadania",
+    value: "cc"
   },
-  {display: "cedula de extranjeria"
+  {display: "cedula de extranjeria",
+  value: "ce"
   },
-  {display: "pasaporte"}
+  {display: "pasaporte",
+  value: "ps"
+  },
+  {display: "registro civil",
+  value: "rc"
+  }
 ]
 
 listaDeCarreras = [
   {
-    display: "Ingenieria de sistemas"
+    display: "Ingenieria de sistemas",
+    value: "sistemas"
   },
   {
-    display: "Ingeniera electronica"
+    display: "Ingeniera industrial",
+    value: "industrial"
   },
   {
-    display: "Ingeniera mecatronica"
+    display: "Contaduria publica",
+    value: "contaduria"
   },
   {
-    display: "Ingenieria industrial"
+    display: "Administracion de empresas",
+    value: "administracion"
   }
 ]
 }

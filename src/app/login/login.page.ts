@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage';
+
 
 
 @Component({
@@ -28,7 +29,8 @@ export class LoginPage implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private authenticate: AuthenticateService,
     private navCtrol: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private alertController: AlertController
     ) { 
 
     this.loginForm = this.formBuilder.group({
@@ -55,15 +57,37 @@ export class LoginPage implements OnInit {
 
   ngOnInit() { 
   }
-  loginUser(loginForm: any) {
+  loginUserLocal(loginForm: any) {
     console.log(loginForm);
-    this.authenticate.loginUser(loginForm).then(resp => {
+    this.authenticate.loginUserLocal(loginForm).then(resp => {
       this.errorMessage = "";
       this.storage.set("isUserLoggedIn", true);
       this.navCtrol.navigateForward("/menu/home");
     }).catch(err => {
       this.errorMessage = err
-    });
+    }); 
   }
 
+  loginUserDB(loginForm: any) {
+    console.log(loginForm);
+    this.authenticate.loginUserDB(loginForm).then( (res: any) => {
+      this.storage.set("isUserLoggedIn", true);
+      this.storage.set("user_id", res.user.id);
+      this.navCtrol.navigateForward("/menu/home");
+    }).catch(err => {
+      this.presentAlert("Opps", "Hubo un error", err);
+    }); 
+  }
+
+  async presentAlert(header: any, subHeader: any, message: any) {
+    const alert = await this.alertController.create(
+     {
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: ['OK']
+     }
+    );
+    await alert.present();
+  }
 }

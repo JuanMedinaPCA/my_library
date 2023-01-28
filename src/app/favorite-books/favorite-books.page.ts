@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../services/library.service';
 import { Storage } from '@ionic/storage-angular';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { BookDetailModalPage } from '../book-detail-modal/book-detail-modal.page';
 
 @Component({
   selector: 'app-favorite-books',
@@ -11,17 +12,23 @@ import { AlertController } from '@ionic/angular';
 export class FavoriteBooksPage implements OnInit {
 
   my_favorite_books: any; 
+  books: any;
 
   constructor(
     private libraryService: LibraryService,
     private storage: Storage,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private modalController: ModalController
     ) { }
 
   async ngOnInit() {
+    
     const user_id = await this.storage.get("user_id");
     this.libraryService.getMyFavoriteBooks(user_id).subscribe((data:any) =>{
       this.my_favorite_books = data
+      this.libraryService.getBooks().then(books => {
+        this.books = books;
+      })
     },
     (error) => 
       this.presentAlert("Opps", "hubo un error", error)
@@ -37,7 +44,16 @@ export class FavoriteBooksPage implements OnInit {
         buttons: ['Ok']
       }
     );
-    await alert.present();
+    await alert.present(); 
   }
 
+  async showBook(book: any){
+    const modal = await this.modalController.create({
+      component: BookDetailModalPage,
+      componentProps: {
+        book: book
+      }
+    });
+    return await modal.present(); 
+  }
 }

@@ -12,8 +12,8 @@
 <ion-content>
 
 <ion-list>
-  <ion-item>
-    <ion-label></ion-label>
+  <ion-item *ngFor="let book of books">
+    <ion-label>{{book.name}}</ion-label>
   </ion-item>
 </ion-list>
 </ion-content>

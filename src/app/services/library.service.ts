@@ -61,4 +61,8 @@ export class LibraryService {
     }
     return this.http.post(`${this.urlServer}dislike`,params, this.httpHeaders)
   }
+
+  getListTop10(){
+    return fetch(`${this.urlServer}top_books`).then(list => list.json())
+  }
 }

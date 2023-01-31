@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button slot="end" (click)="closeModal()">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+  <img alt="" src="{{author.photo}}" />
+  <ion-card-header>
+    <ion-card-title>{{author.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Seguidores: {{author.followers}}</ion-col>
+      <ion-col>Popularidad: {{author.popularity}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><p>Generos: {{author.genres}}</p></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card-content>
+</ion-card>
+</ion-content>

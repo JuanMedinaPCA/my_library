@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../services/library.service';
+import { DetailAuthorsModalPage } from '../detail-authors-modal/detail-authors-modal.page';
 
 import { ModalController } from '@ionic/angular';
 
@@ -21,13 +22,13 @@ authors: any;
     })
   }
 
-  /*async showAuthor(authors: any){
+  async showAuthor(authors: any){
     const modal = await this.modalController.create({
-      component: AuthorsModalPage,
+      component: DetailAuthorsModalPage,
       componentProps: {
         authors: authors
       }
     });
     return await modal.present();
-  }  */
+  }  
 }

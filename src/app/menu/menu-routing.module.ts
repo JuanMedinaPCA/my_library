@@ -23,6 +23,10 @@ const routes: Routes = [
       {
         path: 'favorite-books',
         loadChildren: () => import('../favorite-books/favorite-books.module').then( m => m.FavoriteBooksPageModule)
+      },
+      {
+        path: 'top10',
+        loadChildren: () => import('../top10/top10.module').then( m => m.Top10PageModule)
       }
     ]
   }

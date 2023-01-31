@@ -12,7 +12,7 @@
 
 <ion-content>
 <ion-list>
-  <ion-item *ngFor="let author of authors" >
+  <ion-item *ngFor="let author of authors" (click)="showAuthor(author)">
     <ion-label>{{author.name}}</ion-label>
   </ion-item>
 </ion-list>

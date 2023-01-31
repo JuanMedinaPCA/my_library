@@ -58,4 +58,9 @@ slideOps = {
     this.navCtrl.navigateForward("/menu/favorite-books");
     this.menu.close();
   }
+
+  goToTop10() {
+    this.navCtrl.navigateForward("/menu/top10");
+    this.menu.close();
+  }
 }

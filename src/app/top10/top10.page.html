@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Top 10</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list *ngFor="let book of listTop10">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="{{book.cover}}"/>
+          </ion-thumbnail>
+          <ion-label>{{book.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  </ion-content>

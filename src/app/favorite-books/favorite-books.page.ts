@@ -22,13 +22,12 @@ export class FavoriteBooksPage implements OnInit {
     ) { }
 
   async ngOnInit() {
-    
+    this.libraryService.getBooks().then(books => {
+      this.books = books;
+    })
     const user_id = await this.storage.get("user_id");
     this.libraryService.getMyFavoriteBooks(user_id).subscribe((data:any) =>{
       this.my_favorite_books = data
-      this.libraryService.getBooks().then(books => {
-        this.books = books;
-      })
     },
     (error) => 
       this.presentAlert("Opps", "hubo un error", error)
@@ -47,11 +46,11 @@ export class FavoriteBooksPage implements OnInit {
     await alert.present(); 
   }
 
-  async showBook(book: any){
+  async showBook(books: any){
     const modal = await this.modalController.create({
       component: BookDetailModalPage,
       componentProps: {
-        book: book
+        book: books
       }
     });
     return await modal.present(); 
